@@ -27,10 +27,10 @@ export const MovieDetailPage = () => {
     <main>
       <section className="flex justify-around flex-wrap py-5">
         <div className="max-w-sm">
-          <img className="rounded" src={image} alt={movie.title} />
+          <img className="rounded border-2 " src={image} alt={movie.title} />
         </div>
         <div className="max-w-2xl text-gray-700 text-lg dark:text-white">
-          <h1 className="text-4xl font-bold my-3 text-center lg:text-left">{movie.title}</h1>
+          <h1 className="text-4xl font-bold my-3 text-center lg:text-left ">{movie.title}</h1>
           <p align="left" className="my-4">{movie.overview}</p>
             { movie.genres ? (
               <p className="my-7 flex flex-wrap gap-2">

@@ -5,7 +5,7 @@ export const Card = ({movie}) => {
   const{id,original_title, overview, poster_path}=movie;
   const imgpth=poster_path?`https://image.tmdb.org/t/p/w500/${poster_path}`:Backupimgsathi;
   return (  
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700  m-3">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm shadow-black dark:shadow-white dark:bg-black dark:border-gray-400  m-4">
             <Link to={`/movie/${id}`}>
               <img className="rounded-t-lg" src={imgpth} alt="" />
             </Link>
