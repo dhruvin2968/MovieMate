@@ -6,7 +6,7 @@ export const Headerr = () => {
   
   const [darkMode, setDarkMode] = useState( JSON.parse(localStorage.getItem("darkMode")) || false);
   const [hidden,setHidden]=useState(false);
-  const activeClass = "text-base block py-2 px-3 text-white bg-blue-700 rounded-full border-8 border-y-4 md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-white";
+  const activeClass = "text-base block py-2 px-3 text-white bg-blue-700 rounded-full border-8 border-y-4 md:bg-transparent md:text-blue-700 md:p-0 dark:text-blue-500 dark:bg-white";
   const inactiveClass = "text-base block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 border-8 border-y-4 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-black dark:hover:text-white md:dark:hover:bg-transparent dark:border-black dark:bg-black";
   
   const navigate=useNavigate();
