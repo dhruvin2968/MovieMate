@@ -4,7 +4,7 @@
  import { Footerr } from './components';
  function App() {
   return (   
-    <div className="App ">
+    <div className="App dark:bg-slate-900 ">
       <Headerr/>
       <AllRoutes/>
       <Footerr/>
@@ -13,3 +13,4 @@
 }
 
 export default App;
+

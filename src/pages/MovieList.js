@@ -19,7 +19,6 @@ export const MovieList = ({apiPath,title}) => {
           movies&&movies.map((movie)=>(
             
             <Card key={movie.id} movie={movie}/>
-            
           ))
         }
         
