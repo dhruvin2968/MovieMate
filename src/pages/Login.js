@@ -65,7 +65,10 @@ export const Login = () => {
           </button>
         </form>
         {isAuth||<p className="text-center mt-4 text-gray-600 dark:text-gray-300">
-          Don't have an account? <a href="/register" className="text-blue-500 hover:underline">Register</a>
+          Don't have an account? <button onClick={() => navigate("/register")} className="text-blue-500 hover:underline">
+  Register
+</button>
+
         </p>
 }
       </div>
