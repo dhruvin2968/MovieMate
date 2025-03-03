@@ -64,9 +64,10 @@ export const Login = () => {
             Login
           </button>
         </form>
-        <p className="text-center mt-4 text-gray-600 dark:text-gray-300">
+        {isAuth||<p className="text-center mt-4 text-gray-600 dark:text-gray-300">
           Don't have an account? <a href="/register" className="text-blue-500 hover:underline">Register</a>
         </p>
+}
       </div>
     </div>
   );
