@@ -13,7 +13,7 @@ export const Register = () => {
     e.preventDefault();
     
     try {
-        await axios.post("http://localhost:3001/register", form);
+        await axios.post("https://moviemate-backend-tpz4.onrender.com/register", form);
         navigate('/login');
         toast.success('Registration Successful!');
     } catch (err) {

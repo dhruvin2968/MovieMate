@@ -19,7 +19,7 @@ export const Login = () => {
     const loadingToast = toast.loading('Logging you in...');
 
     try {
-        const result = await axios.post("http://localhost:3001/login", form);
+        const result = await axios.post("https://moviemate-backend-tpz4.onrender.com/login", form);
 
         toast.dismiss(loadingToast); // Remove the loading toast
 
