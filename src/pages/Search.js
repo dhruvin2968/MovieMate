@@ -6,9 +6,9 @@ import { useFetch } from "../hooks/useFetch"
 import { useTitle } from "../hooks/useTitle";
 
 export const Search = ({apiPath}) => {
-
-  const [searchParams]=useSearchParams();
-  const queryTerm=searchParams.get("q"); //in url if you see q refers to the searched term
+                                          //useSearchParams returns an array 1st term is q=queryterm and 2nd is the function toupdate it since we re interested onluy in the query term we extract and use it
+  const [searchParams]=useSearchParams();  //searchParams stores "q=queryTerm"
+  const queryTerm=searchParams.get("q"); //the queryTerm gets extracted and stored in the variable queryTerm
   const {data:movies}=useFetch(apiPath,queryTerm);//this is fetch request
 
   useTitle(`Search for ${queryTerm}`)

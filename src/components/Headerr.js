@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link,NavLink,useNavigate } from "react-router-dom";
+
+import toast from 'react-hot-toast';
 import Logo from "./logo.png"
 export const Headerr = () => {
   
@@ -10,7 +12,9 @@ export const Headerr = () => {
   const inactiveClass = "text-base block py-2 px-3 text-gray-900 rounded-full bg-gray-200 border-8 hover:bg-gray-100 border-8 border-y-4 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-black dark:hover:text-white md:dark:hover:bg-transparent dark:border-black dark:bg-black";
   
   const navigate=useNavigate();
-
+  const [isAuth, setIsAuth] = useState(
+    JSON.parse(localStorage.getItem("isAuth")) || false
+  );
   // const handleSubmit=(event)=>
   // {
   //    event.preventDefault(); //This will prevent the form to rerender
@@ -20,6 +24,9 @@ export const Headerr = () => {
   //                                               //  when you search and enter only the movielist k andar ka div is changed
   //                                                // and not the header footer,etc.
   // }
+  const handleLogin=()=>{
+    return navigate("/login")
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
     const queryTerm = event.target.value; // Get the current input value
@@ -42,6 +49,12 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
+  function handleLogout() {
+    setIsAuth(false);
+    navigate("/");
+    localStorage.setItem("isAuth", false);
+    toast.success("Logged Out Successfully")
+  }
 
   return (
     <header>
@@ -75,9 +88,9 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
               </div>
 
 
-              <xx onChange={handleSubmit} >
+              <div onChange={handleSubmit} >
                 <input  name="search" type="text" id="ssearch-navbar"className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." autoComplete="off"/>
-              </xx>
+              </div>
             
             </div>
             <button onClick={()=>setHidden(!hidden)}   data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
@@ -97,9 +110,9 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
                 </svg>
               </div>
 
-              <xx onChange={handleSubmit}>
+              <div onChange={handleSubmit}>
               <input name="search" type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." autoComplete="off"/>
-            </xx>
+            </div>
             
             </div>
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-bold border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-black md:dark:bg-black dark:border-gray-700">
@@ -116,6 +129,25 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
               <li>
                 <NavLink to="/movies/upcoming" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Upcoming</NavLink>
               </li>
+              {!isAuth&&
+<button onClick={handleLogin}>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-power" viewBox="0 0 16 16">
+  <path d="M7.5 1v7h1V1z"/>
+  <path d="M3 8.812a5 5 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812"/>
+</svg>
+              </button>}
+              {isAuth&&
+              <li>
+                <NavLink to="/movies/upcoming" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Wishlist</NavLink>
+              </li>
+}
+{isAuth&&
+<button onClick={handleLogout}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" className="bi bi-door-closed border-2 p-1 border-black" viewBox="0 0 16 16">
+                  <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3zm1 13h8V2H4z" />
+                  <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0" />
+                </svg>
+              </button>}
             </ul>
           </div>
         </div>
