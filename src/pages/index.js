@@ -4,3 +4,4 @@ export {Search} from "./Search";
 export {PageNotFound} from "./PageNotFound";
 export {Register} from "./Register"
 export {Login} from "./Login"
+export {Watchlist} from "./WatchList"

@@ -1,5 +1,5 @@
 import {Routes,Route} from "react-router-dom";
-import { MovieList, MovieDetailPage, Search, PageNotFound,Register,Login} from "../pages";
+import { MovieList, MovieDetailPage, Search, PageNotFound,Register,Login, Watchlist} from "../pages";
 
 export const AllRoutes = () => {
   return (
@@ -13,6 +13,7 @@ export const AllRoutes = () => {
     <Route path="movie/:id" element={<MovieDetailPage />} />
     <Route path="register" element={<Register/>} />
     <Route path="login" element={<Login/>} />
+    <Route path="watchlist" element={<Watchlist/>} />
     <Route path="*" element={<PageNotFound />} />
     </Routes>
     </div>

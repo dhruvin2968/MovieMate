@@ -8,22 +8,19 @@ export const Headerr = () => {
   
  // const [darkMode, setDarkMode] = useState( JSON.parse(localStorage.getItem("darkMode")) || false);
   const [hidden,setHidden]=useState(false);
+
+  const [isAuth, setIsAuth] = useState(false);
   const activeClass = "text-base block py-2 px-3 text-white bg-blue-700 rounded-full border-8 border-y-4 md:bg-transparent md:text-blue-700 md:p-0 dark:text-blue-500 dark:bg-white";
   const inactiveClass = "text-base block py-2 px-3 text-gray-900 rounded-full bg-gray-200 border-8 hover:bg-gray-100 border-8 border-y-4 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-black dark:hover:text-white md:dark:hover:bg-transparent dark:border-black dark:bg-black";
   
   const navigate=useNavigate();
-  const [isAuth, setIsAuth] = useState(
-    JSON.parse(localStorage.getItem("isAuth")) || false
-  );
-  // const handleSubmit=(event)=>
-  // {
-  //    event.preventDefault(); //This will prevent the form to rerender
-  //    const queryTerm=event.target.search.value;  //fetches the term given through search name
-  //    event.target.reset();
-  //    return navigate(`/search?q=${queryTerm}`);  //we use navigate to just not rerender
-  //                                               //  when you search and enter only the movielist k andar ka div is changed
-  //                                                // and not the header footer,etc.
-  // }
+  useEffect(() => {
+    const authStatus = JSON.parse(localStorage.getItem("isAuth")) || false;
+    setIsAuth(authStatus);
+    if (authStatus) navigate("/wishlist");
+  }, [navigate]);
+
+  
   const handleLogin=()=>{
     return navigate("/login")
   }
@@ -138,7 +135,7 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
               </button>}
               {isAuth&&
               <li>
-                <NavLink to="/movies/upcoming" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Wishlist</NavLink>
+                <NavLink to="/watchlist" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Wishlist</NavLink>
               </li>
 }
 {isAuth&&
