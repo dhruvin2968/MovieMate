@@ -17,7 +17,6 @@ export const Headerr = () => {
   useEffect(() => {
     const authStatus = JSON.parse(localStorage.getItem("isAuth")) || false;
     setIsAuth(authStatus);
-    if (authStatus) navigate("/wishlist");
   }, [navigate]);
 
   
@@ -48,10 +47,12 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
   }, [darkMode]);
   function handleLogout() {
     setIsAuth(false);
+    localStorage.removeItem("userId");  // ✅ Clear userId on logout
+    localStorage.setItem("isAuth", false);  
     navigate("/");
-    localStorage.setItem("isAuth", false);
-    toast.success("Logged Out Successfully")
-  }
+    toast.success("Logged Out Successfully");
+}
+
 
   return (
     <header>
@@ -128,14 +129,14 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
               </li>
               {!isAuth&&
 <button onClick={handleLogin}>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-power" viewBox="0 0 16 16">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" className="bi bi-power" viewBox="0 0 16 16">
   <path d="M7.5 1v7h1V1z"/>
   <path d="M3 8.812a5 5 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812"/>
 </svg>
               </button>}
               {isAuth&&
               <li>
-                <NavLink to="/watchlist" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Wishlist</NavLink>
+                <NavLink to="/watchlist" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Watchlist</NavLink>
               </li>
 }
 {isAuth&&

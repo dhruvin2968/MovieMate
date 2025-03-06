@@ -13,29 +13,63 @@ export const Login = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
 
-    const loadingToast = toast.loading('Logging you in...');
+//     const loadingToast = toast.loading('Logging you in...');
+    
+//     try {
+//         const result = await axios.post("https://moviemate-backend-tpz4.onrender.com/login", form);
+       
+//         console.log(result.data)
+//         toast.dismiss(loadingToast); 
 
-    try {
-        const result = await axios.post("https://moviemate-backend-tpz4.onrender.com/login", form);
+//         if (result.data.success) {
+//             toast.success("Login successful!");
+//             navigate('/');
+//             setIsAuth(true);
+//             localStorage.setItem("isAuth", true)
+//             console.log(result)
+//             localStorage.setItem("userId", result.data.userId);
+            
+//         } else {
+//             toast.error(result.data); // Show error from backend response
+//         }
+//     } catch (err) {
+//         toast.dismiss(loadingToast);
+//         toast.error("Invalid credentials. Please try again.");
+//     }
+// };
+const handleSubmit = async (e) => { 
+  e.preventDefault();
 
-        toast.dismiss(loadingToast); // Remove the loading toast
+  const loadingToast = toast.loading('Logging you in...');
+  
+  try {
+      const result = await axios.post("https://moviemate-backend-tpz4.onrender.com/login", form);
+     
+      toast.dismiss(loadingToast); 
 
-        if (result.data === "Success") {
-            toast.success("Login successful!");
-            navigate('/');
-            setIsAuth(true);
-            localStorage.setItem("isAuth", true)
-        } else {
-            toast.error(result.data); // Show error from backend response
-        }
-    } catch (err) {
-        toast.dismiss(loadingToast);
-        toast.error("Invalid credentials. Please try again.");
-    }
+      if (result.data.success) {
+          toast.success("Login successful!");
+
+          setIsAuth(true);
+          localStorage.setItem("isAuth", "true");
+          localStorage.setItem("userId", result.data.userId);
+          console.log(result)
+          // ✅ Prevent forced navigation to /watchlist
+          if (window.location.pathname === "/login") {
+              navigate("/");
+          }
+      } else {
+          toast.error(result.data);
+      }
+  } catch (err) {
+      toast.dismiss(loadingToast);
+      toast.error("Invalid credentials. Please try again.");
+  }
 };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-black">
       <div className="bg-white dark:bg-gray-900 p-8 shadow-lg rounded-lg w-96">
