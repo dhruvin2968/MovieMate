@@ -20,7 +20,7 @@ export const MovieList = ({apiPath,title}) => {
             
             <Card key={movie.id} movie={movie}/>
           ))
-        }
+        } 
         
       
         </div>

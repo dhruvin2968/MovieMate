@@ -55,8 +55,8 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
 
 
   return (
-    <header>
-      <nav className="bg-white border-b-2 border-gray-200 dark:bg-black dark:border-gray-900 px-2 sm:px-4 py-1">
+    <header className="bg-transparent">
+      <nav className="bg-white  dark:bg-black px-2 sm:px-4 py-1">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img src={Logo} className="h-8" alt="Cinemate_by_Dhruvin" />
@@ -127,30 +127,63 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
               <li>
                 <NavLink to="/movies/upcoming" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Upcoming</NavLink>
               </li>
-              {!isAuth&&
-<button onClick={handleLogin}>
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" className="bi bi-power" viewBox="0 0 16 16">
-  <path d="M7.5 1v7h1V1z"/>
-  <path d="M3 8.812a5 5 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812"/>
-</svg>
-              </button>}
+  
               {isAuth&&
               <li>
                 <NavLink to="/watchlist" className={({ isActive }) => isActive ? activeClass : inactiveClass}>Watchlist</NavLink>
               </li>
 }
-{isAuth&&
-<button onClick={handleLogout}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" className="bi bi-door-closed border-2 p-1 border-black" viewBox="0 0 16 16">
-                  <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3zm1 13h8V2H4z" />
-                  <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0" />
-                </svg>
-              </button>}
+
             </ul>
           </div>
+          
         </div>
+       
       </nav>
-
+      <div className="flex justify-end">
+    {!isAuth &&
+      <button onClick={handleLogin} className="flex items-center gap-2 pr-6  py-2  rounded-md shadow-md bg-transparent text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-800 transition duration-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          className="fill-black dark:fill-white"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fillRule="evenodd"
+            d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"
+          />
+          <path
+            fillRule="evenodd"
+            d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
+          />
+        </svg>
+        <span className="text-lg font-semibold">Login</span>
+      </button>
+    }
+    {isAuth &&
+      <button onClick={handleLogout} className="flex items-center gap-2 pr-6  py-2  rounded-md shadow-md bg-transparent text-black dark:text-white hover:bg-gray-300 dark:hover:bg-gray-800 transition duration-300">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20" 
+        className="fill-black dark:fill-white"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fillRule="evenodd"
+          d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"
+        />
+        <path
+          fillRule="evenodd"
+          d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
+        />
+      </svg>
+      <span className="text-lg font-semibold">LogOut</span>
+    </button>
+    }
+  </div>
     </header>
   )
 }

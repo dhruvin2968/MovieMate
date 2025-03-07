@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState} from "react";
+import { useState,useEffect} from "react";
 import Backupimgsathi from "./img.jpeg";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -11,39 +11,70 @@ export const Card = ({ movie }) => {
     : Backupimgsathi;
 
   const [inWatchlist, setInWatchlist] = useState(false);
+  useEffect(() => {
+    const checkWatchlist = async () => {
+      try {
+        const userId = localStorage.getItem("userId");
+        if (!userId) return;
 
-  // useEffect(() => {
-  //   const checkWatchlist = async () => {
-  //     try {
-  //       const response = await axios.get("https://moviemate-backend-tpz4.onrender.com/api/watchlist", { withCredentials: true });
-  //       const isInList = response.data.some((item) => item.id === id);
-  //       setInWatchlist(isInList);
-  //     } catch (error) {
-  //       console.error("Error fetching watchlist");
-  //     }
-  //   };
-  //   checkWatchlist();
-  // }, [id]);
+        const response = await axios.get(
+          `http://localhost:3001/watchlist?userId=${userId}`,
+          { withCredentials: true }
+        );
+
+        // Check if this movie exists in the fetched watchlist
+        const isInWatchlist = response.data.some((item) => item.movie.id === id);
+        setInWatchlist(isInWatchlist);
+      } catch (error) {
+        console.error("Error checking watchlist:", error);
+      }
+    };
+
+    checkWatchlist();
+  }, [id]); // Runs when 'id' changes
 
   const addToWatchlist = async () => {
     try {
-      await axios.post("https://moviemate-backend-tpz4.onrender.com/api/watchlist", { userId: "user123", movie }, { withCredentials: true } );
+      const userId = localStorage.getItem("userId"); // Get user ID from storage
+  
+      if (!userId) {
+        toast.error("User ID not found. Please log in.");
+        return;
+      }
+  
+      await axios.post(
+        "http://localhost:3001/watchlist",
+        { userId, movie },
+        { withCredentials: true }
+      );
+  
       setInWatchlist(true);
       toast.success("Added to Watchlist!");
     } catch (error) {
-      toast.error("Failed to add movie");
+      toast.error("Movie already in your Watchlist");
     }
-  };
-
+  }; 
+  
   const removeFromWatchlist = async () => {
     try {
-      await axios.delete(`https://moviemate-backend-tpz4.onrender.com/api/watchlist/${id}`, { data: { userId: "user123" } });
+      const userId = localStorage.getItem("userId"); // Get user ID from storage
+  
+      if (!userId) {
+        toast.error("User ID not found. Please log in.");
+        return;
+      }
+  
+      await axios.delete(`http://localhost:3001/watchlist/${id}`, {
+        data: { userId },
+      });
+  
       setInWatchlist(false);
       toast.success("Removed from Watchlist!");
     } catch (error) {
       toast.error("Failed to remove movie");
     }
   };
+  
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm shadow-black dark:shadow-white dark:bg-black dark:border-gray-400 m-4">

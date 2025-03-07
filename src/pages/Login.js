@@ -62,7 +62,7 @@ const handleSubmit = async (e) => {
               navigate("/");
           }
       } else {
-          toast.error(result.data);
+          toast.error(result.data.message);
       }
   } catch (err) {
       toast.dismiss(loadingToast);
