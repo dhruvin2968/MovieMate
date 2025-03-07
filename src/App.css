@@ -10,11 +10,11 @@ body::-webkit-scrollbar
 {
     display:block;
     width:6px;
-    background-color: rgb(22, 25, 72);
+    background-color: rgba(232, 232, 232, 0.862);
 }
 body::-webkit-scrollbar-thumb
 {
-    background-color: #ff0000;
+    background-color: #000000;
     border-radius: 100px;
 }
 

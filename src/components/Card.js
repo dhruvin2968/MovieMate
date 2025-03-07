@@ -86,7 +86,7 @@ export const Card = ({ movie,state,setState }) => {
   
 
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm shadow-black dark:shadow-white dark:bg-black dark:border-gray-400 m-4">
+    <div className="max-w-sm bg-white border  rounded-lg shadow-sm shadow-slate-400 dark:shadow-white dark:bg-black dark:border-gray-400 m-4">
       <Link to={`/movie/${id}`}>
         <img className="rounded-t-lg" src={imgpth} alt={original_title} />
       </Link>
