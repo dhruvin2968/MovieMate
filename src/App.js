@@ -5,7 +5,7 @@
  import { Toaster } from 'react-hot-toast';
  function App() {
   return (   
-    <div className="App dark:bg-slate-900 ">
+    <div className="App dark:bg-slate-900 bg-slate-200 ">
       <Toaster/> 
       <Headerr/>
       <AllRoutes/>

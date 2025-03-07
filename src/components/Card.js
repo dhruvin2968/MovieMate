@@ -38,7 +38,7 @@ export const Card = ({ movie,state,setState }) => {
       const userId = localStorage.getItem("userId"); // Get user ID from storage
   
       if (!userId) {
-        toast.error("User ID not found. Please log in.");
+        toast.error("Please log in.");
         return;
       }
   
@@ -59,7 +59,7 @@ export const Card = ({ movie,state,setState }) => {
     try {
         const userId = localStorage.getItem("userId");
         if (!userId) {
-            toast.error("User ID not found. Please log in.");
+            toast.error(" Please log in.");
             return;
         }
 

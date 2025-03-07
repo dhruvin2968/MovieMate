@@ -22,8 +22,8 @@ export const Register = () => {
 };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-gray-100 text-gray-900 dark:bg-black dark:text-white transition-colors">
-      <div className="w-full max-w-md p-6 rounded-2xl shadow-md bg-white dark:bg-gray-900 transition-colors">
+    <div className="min-h-screen flex items-center justify-center p-6 bg-slate-200  dark:bg-slate-900 dark:text-white transition-colors">
+      <div className="w-full max-w-md p-6 rounded-2xl shadow-md bg-white dark:bg-black transition-colors">
         <h2 className="text-2xl font-semibold text-center mb-4">Register</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <input

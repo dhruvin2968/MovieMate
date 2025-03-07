@@ -19,7 +19,7 @@ export const Watchlist = () => {
           const storedUsername = localStorage.getItem("username"); 
           setUsername(storedUsername);
           if (!userId) {
-              toast.error("User ID not found. Please log in.");
+              toast.error("Please log in.");
               return;
           }
   

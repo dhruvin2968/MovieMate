@@ -44,8 +44,8 @@ const handleSubmit = async (e) => {
 };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-black">
-      <div className="bg-white dark:bg-gray-900 p-8 shadow-lg rounded-lg w-96">
+    <div className="flex items-center justify-center min-h-screen bg-slate-200 dark:bg-slate-900">
+      <div className="bg-white dark:bg-black p-8 shadow-lg rounded-lg w-96">
         <h2 className="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-gray-100">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
