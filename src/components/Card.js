@@ -18,7 +18,7 @@ export const Card = ({ movie }) => {
         if (!userId) return;
 
         const response = await axios.get(
-          `http://localhost:3001/watchlist?userId=${userId}`,
+          `https://moviemate-backend-tpz4.onrender.com/watchlist?userId=${userId}`,
           { withCredentials: true }
         );
 
@@ -43,7 +43,7 @@ export const Card = ({ movie }) => {
       }
   
       await axios.post(
-        "http://localhost:3001/watchlist",
+        "https://moviemate-backend-tpz4.onrender.com/watchlist",
         { userId, movie },
         { withCredentials: true }
       );
@@ -64,7 +64,7 @@ export const Card = ({ movie }) => {
         return;
       }
   
-      await axios.delete(`http://localhost:3001/watchlist/${id}`, {
+      await axios.delete(`https://moviemate-backend-tpz4.onrender.com/watchlist/${id}`, {
         data: { userId },
       });
   

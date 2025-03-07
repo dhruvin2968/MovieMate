@@ -12,34 +12,6 @@ export const Login = () => {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const loadingToast = toast.loading('Logging you in...');
-    
-//     try {
-//         const result = await axios.post("https://moviemate-backend-tpz4.onrender.com/login", form);
-       
-//         console.log(result.data)
-//         toast.dismiss(loadingToast); 
-
-//         if (result.data.success) {
-//             toast.success("Login successful!");
-//             navigate('/');
-//             setIsAuth(true);
-//             localStorage.setItem("isAuth", true)
-//             console.log(result)
-//             localStorage.setItem("userId", result.data.userId);
-            
-//         } else {
-//             toast.error(result.data); // Show error from backend response
-//         }
-//     } catch (err) {
-//         toast.dismiss(loadingToast);
-//         toast.error("Invalid credentials. Please try again.");
-//     }
-// };
 const handleSubmit = async (e) => { 
   e.preventDefault();
 
