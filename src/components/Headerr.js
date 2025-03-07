@@ -3,15 +3,15 @@ import { useState } from "react";
 import { Link,NavLink,useNavigate } from "react-router-dom";
 
 import toast from 'react-hot-toast';
-import Logo from "./logo.png"
+import Logo from "./moviematelogo.png" 
 export const Headerr = () => {
   
  // const [darkMode, setDarkMode] = useState( JSON.parse(localStorage.getItem("darkMode")) || false);
   const [hidden,setHidden]=useState(false);
 
   const [isAuth, setIsAuth] = useState(false);
-  const activeClass = "text-base block py-2 px-3 text-white bg-blue-700 rounded-full border-8 border-y-4 md:bg-transparent md:text-blue-700 md:p-0 dark:text-blue-500 dark:bg-white";
-  const inactiveClass = "text-base block py-2 px-3 text-gray-900 rounded-full bg-gray-200 border-8 hover:bg-gray-100 border-8 border-y-4 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-black dark:hover:text-white md:dark:hover:bg-transparent dark:border-black dark:bg-black";
+  const activeClass = "block py-2 px-3 text-white bg-blue-700 rounded-full border-8 border-y-4  md:text-blue-700 md:p-0 dark:text-blue-500 bg-gray-200";
+  const inactiveClass = "text-base block py-2 px-3 text-gray-900 rounded-full bg-gray-200  border-8 border-y-4  md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-black dark:hover:text-white md:dark:hover:bg-transparent dark:border-black dark:bg-black";
   
   const navigate=useNavigate();
   useEffect(() => {
@@ -56,10 +56,10 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
 
   return (
     <header className="bg-transparent">
-      <nav className="bg-white  dark:bg-black px-2 sm:px-4 py-1">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <nav className="bg-white  dark:bg-black px-2 sm:px-4 py-0">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src={Logo} className="h-8" alt="Cinemate_by_Dhruvin" />
+            <img src={Logo} className="md:h-14 h-10" alt="Cinemate_by_Dhruvin" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">MovieMate</span>
           </Link>
 

@@ -4,7 +4,7 @@ import Backupimgsathi from "./img.jpeg";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-export const Card = ({ movie }) => {
+export const Card = ({ movie,state,setState }) => {
   const { id, original_title, overview, poster_path } = movie;
   const imgpth = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
@@ -16,7 +16,7 @@ export const Card = ({ movie }) => {
       try {
         const userId = localStorage.getItem("userId");
         if (!userId) return;
-
+ 
         const response = await axios.get(
           `https://moviemate-backend-tpz4.onrender.com/watchlist?userId=${userId}`,
           { withCredentials: true }
@@ -57,23 +57,32 @@ export const Card = ({ movie }) => {
   
   const removeFromWatchlist = async () => {
     try {
-      const userId = localStorage.getItem("userId"); // Get user ID from storage
-  
-      if (!userId) {
-        toast.error("User ID not found. Please log in.");
-        return;
-      }
-  
-      await axios.delete(`https://moviemate-backend-tpz4.onrender.com/watchlist/${id}`, {
-        data: { userId },
-      });
-  
-      setInWatchlist(false);
-      toast.success("Removed from Watchlist!");
+        const userId = localStorage.getItem("userId");
+        if (!userId) {
+            toast.error("User ID not found. Please log in.");
+            return;
+        }
+
+        if (!movie.id) {
+            toast.error("Invalid movie ID");
+            return;
+        }
+
+        console.log("Deleting movie:", movie.id);
+
+        await axios.delete("https://moviemate-backend-tpz4.onrender.com/watchlist", {
+            data: { userId, movieId: movie.id },
+        });
+
+        setState(prev => !prev); // ✅ Correct way to trigger `useEffect`
+        toast.success("Removed from Watchlist!");
     } catch (error) {
-      toast.error("Failed to remove movie");
+        console.error("Delete Error:", error.response?.data || error.message);
+        toast.error("Failed to remove movie");
     }
-  };
+};
+
+
   
 
   return (

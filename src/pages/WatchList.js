@@ -9,6 +9,7 @@ import toast from "react-hot-toast"
 
 export const Watchlist = () => {
   const [movies, setMovies] = useState([]);
+  const [state,setState]=useState(true)
   //const navigate = useNavigate();
   useTitle("Your Watchlist");
   useEffect(() => {
@@ -33,7 +34,7 @@ export const Watchlist = () => {
   };
   
     fetchWatchlist();
-  }, []);
+  }, [state]);
    
 
   return (
@@ -45,7 +46,7 @@ export const Watchlist = () => {
 
     <div className="flex flex-wrap justify-evenly other:justify-start">
       {movies.length > 0 ? (
-        movies.map((item) => <Card key={item.movie.id} movie={item.movie} />)
+        movies.map((item) => <Card state={state} setState={setState} key={item.movie.id} movie={item.movie} />)
       ) : (
         <p className="text-center w-full text-gray-500">Your watchlist is empty.</p>
       )}
