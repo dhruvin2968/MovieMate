@@ -101,7 +101,7 @@ export const Card = ({ movie,state,setState }) => {
         </p>
         <button
           onClick={inWatchlist ? removeFromWatchlist : addToWatchlist}
-          className={`w-full px-4 py-2 text-white font-semibold rounded-md ${
+          className={`w-full px-4 py-2 sticky bottom-3 text-white font-semibold rounded-md ${
             inWatchlist ? "bg-red-500 hover:bg-red-700" : "bg-blue-500 hover:bg-blue-700"
           }`}
         >

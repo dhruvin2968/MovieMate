@@ -28,6 +28,7 @@ const handleSubmit = async (e) => {
           setIsAuth(true);
           localStorage.setItem("isAuth", "true");
           localStorage.setItem("userId", result.data.userId);
+          localStorage.setItem("username", result.data.username);
           console.log(result)
           // ✅ Prevent forced navigation to /watchlist
           if (window.location.pathname === "/login") {

@@ -29,7 +29,7 @@ export const Register = () => {
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder="Name"
             onChange={handleChange}
             className="w-full p-3 rounded-lg border focus:ring-2 focus:ring-blue-500 transition bg-transparent dark:border-gray-700 dark:focus:ring-blue-400"
             required
