@@ -35,7 +35,7 @@ export const MovieDetailPage = () => {
             { movie.genres ? (
               <p className="my-7 flex flex-wrap gap-2">
               { movie.genres.map((genre) => (
-                <span className="mr-2 border border-gray-200 rounded dark:border-gray-600 p-2" key={genre.id}>{genre.name}</span>
+                <span className="mr-2 border border-gray-400 rounded dark:border-gray-600 p-2" key={genre.id}>{genre.name}</span>
               )) }
             </p>
             ) : "" }
