@@ -47,7 +47,8 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
   }, [darkMode]);
   function handleLogout() {
     setIsAuth(false);
-    localStorage.removeItem("userId");  // ✅ Clear userId on logout
+    localStorage.removeItem("userId"); 
+    localStorage.removeItem("username"); 
     localStorage.setItem("isAuth", false);  
     navigate("/");
     toast.success("Logged Out Successfully");

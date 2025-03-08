@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useTitle } from "../hooks/useTitle";
 import axios from "axios";
 import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -10,7 +11,7 @@ export const Watchlist = () => {
   const [movies, setMovies] = useState([]);
   const [state,setState]=useState(true)
   const [username, setUsername] = useState(""); 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   useTitle("Your Watchlist");
   useEffect(() => {
     const fetchWatchlist = async () => {
@@ -19,6 +20,7 @@ export const Watchlist = () => {
           const storedUsername = localStorage.getItem("username"); 
           setUsername(storedUsername);
           if (!userId) {
+              navigate("/")
               toast.error("Please log in.");
               return;
           }
@@ -35,7 +37,7 @@ export const Watchlist = () => {
   };
   
     fetchWatchlist();
-  }, [state]);
+  }, [state]);//eslint-disable-line
    
 
   return (
