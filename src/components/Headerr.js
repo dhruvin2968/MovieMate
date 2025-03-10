@@ -61,7 +61,7 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img src={Logo} className="h-12" alt="Cinemate_by_Dhruvin" />
-            <span className="self-center md:text-2xl text-xl font-semibold whitespace-nowrap dark:text-white">MovieMate</span>
+            <span className="self-center md:text-3xl text-2xl font-semibold fonts whitespace-nowrap dark:text-white">MovieMate</span>
           </Link>
 
 
@@ -114,7 +114,7 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
             </div>
             
             </div>
-            <ul className="flex flex-col p-4 md:p-0 mt-4 font-bold  border-gray-100 rounded-lg bg-slate-200 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-slate-200 dark:bg-black md:dark:bg-black dark:border-gray-700">
+            <ul className="flex flex-col fonts p-4 md:p-0 mt-4 font-bold  border-gray-100 rounded-lg bg-slate-200 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-slate-200 dark:bg-black md:dark:bg-black dark:border-gray-700">
               <li >
                 <NavLink to="/" className={({ isActive }) => isActive ? activeClass : inactiveClass} end> Home</NavLink>
               </li>
@@ -160,7 +160,7 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
             d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
           />
         </svg>
-        <span className="text-lg font-semibold">Login</span>
+        <span className="text-lg fonts font-semibold">Login</span>
       </button>
     }
     {isAuth &&
@@ -181,7 +181,7 @@ const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMo
           d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
         />
       </svg>
-      <span className="text-lg font-semibold">LogOut</span>
+      <span className="text-lg fonts font-semibold">LogOut</span>
     </button>
     }
   </div>
