@@ -70,8 +70,6 @@ export const Card = ({ movie,state,setState }) => {
             return;
         }
 
-        console.log("Deleting movie:", movie.id);
-
         await axios.delete("https://moviemate-backend-tpz4.onrender.com/watchlist", {
           data: { movieId: movie.id },
           headers: {
