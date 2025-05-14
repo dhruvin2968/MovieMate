@@ -41,13 +41,17 @@ export const Card = ({ movie,state,setState }) => {
         toast.error("Please log in.");
         return;
       }
-  
       await axios.post(
         "https://moviemate-backend-tpz4.onrender.com/watchlist",
-        { userId, movie },
-        { withCredentials: true }
+        { movie },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}` // ✅ Correct format
+          },
+          withCredentials: true,
+        }
       );
-  
+      
       setInWatchlist(true);
       toast.success("Added to Watchlist!");
     } catch (error) {
