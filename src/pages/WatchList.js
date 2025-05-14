@@ -16,20 +16,25 @@ export const Watchlist = () => {
   useEffect(() => {
     const fetchWatchlist = async () => {
       try {
-          const userId = localStorage.getItem("userId"); // Retrieve userId
           const storedUsername = localStorage.getItem("username"); 
           setUsername(storedUsername);
-          if (!userId) {
+          if (!storedUsername) {
               navigate("/")
               toast.error("Please log in.");
               return;
           }
   
-          const response = await axios.get(`https://moviemate-backend-tpz4.onrender.com/watchlist?userId=${userId}`, {
-              withCredentials: true,
+          // const response = await axios.get(`https://moviemate-backend-tpz4.onrender.com/watchlist?userId=${userId}`, {
+          //     withCredentials: true,
+          // });
+          // console.log("Watchlist API Response:", response.data); 
+          const response= await axios.get("https://moviemate-backend-tpz4.onrender.com/watchlist", {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            withCredentials: true,
           });
-          console.log("Watchlist API Response:", response.data); 
-  
+          
           setMovies(response.data);
       } catch (error) {
           toast.error("Error fetching watchlist");

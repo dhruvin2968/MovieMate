@@ -14,30 +14,28 @@ export const Card = ({ movie,state,setState }) => {
   useEffect(() => {
     const checkWatchlist = async () => {
       try {
-        const userId = localStorage.getItem("userId");
-        if (!userId) return;
- 
-        const response = await axios.get(
-          `https://moviemate-backend-tpz4.onrender.com/watchlist?userId=${userId}`,
-          { withCredentials: true }
-        );
-
-        // Check if this movie exists in the fetched watchlist
+        const response = await axios.get("https://moviemate-backend-tpz4.onrender.com/watchlist", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          withCredentials: true,
+        });
+    
         const isInWatchlist = response.data.some((item) => item.movie.id === id);
         setInWatchlist(isInWatchlist);
       } catch (error) {
         console.error("Error checking watchlist:", error);
       }
     };
-
+    
     checkWatchlist();
   }, [id]); // Runs when 'id' changes
 
   const addToWatchlist = async () => {
     try {
-      const userId = localStorage.getItem("userId"); // Get user ID from storage
+      const username = localStorage.getItem("username"); // Get user ID from storage
   
-      if (!userId) {
+      if (!username) {
         toast.error("Please log in.");
         return;
       }
@@ -61,11 +59,11 @@ export const Card = ({ movie,state,setState }) => {
   
   const removeFromWatchlist = async () => {
     try {
-        const userId = localStorage.getItem("userId");
-        if (!userId) {
-            toast.error(" Please log in.");
-            return;
-        }
+        const username = localStorage.getItem("username");
+        if (!username) {
+          toast.error("Invalid movie ID");
+          return;
+      }
 
         if (!movie.id) {
             toast.error("Invalid movie ID");
@@ -75,8 +73,13 @@ export const Card = ({ movie,state,setState }) => {
         console.log("Deleting movie:", movie.id);
 
         await axios.delete("https://moviemate-backend-tpz4.onrender.com/watchlist", {
-            data: { userId, movieId: movie.id },
+          data: { movieId: movie.id },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          withCredentials: true,
         });
+        
 
         setState(prev => !prev); // ✅ Correct way to trigger `useEffect`
         toast.success("Removed from Watchlist!");
