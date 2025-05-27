@@ -82,9 +82,7 @@ Third-Party API:
 TMDB API (The Movie Database)
 
 📁 Folder Structure (Simplified)
-bash
-Copy
-Edit
+```plaintext
 /client
   └── src/
       ├── components/
@@ -98,6 +96,7 @@ Edit
   ├── models/
   ├── routes/
   └── server.js
+```
 🔐 Authentication Flow
 Register: User signs up → password is hashed → saved to MongoDB
 
@@ -112,7 +111,7 @@ bash
 Copy
 Edit
 # Clone the repository
-git clone https://github.com/yourusername/moviemate.git
+git clone https://github.com/dhruvin2968/moviemate.git
 cd moviemate
 
 # Install backend dependencies
@@ -150,7 +149,3 @@ Open to suggestions and contributions. Raise an issue or fork and PR if you want
 
 📄 License
 MIT © Dhruvin Mehta
-
-
-
-Let me know if you want me to generate a fancy GitHub markdown version with badges, deploy buttons, 
