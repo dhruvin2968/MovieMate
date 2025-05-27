@@ -36,7 +36,7 @@ Built using **MongoDB, Express, React, Node.js**, and styled with **Tailwind CSS
 ---
 
 ## 🧠 Project Architecture
-
+```plaintext
 Client (React + Tailwind)
 │
 ├── Pages: Home, Login, Register, Watchlist
@@ -55,6 +55,7 @@ Backend (Node.js + Express)
 └── MongoDB
     ├── Users
     └── Watchlist (linked to user by ID)
+```
 ⚙️ Tech Stack
 Frontend:
 
