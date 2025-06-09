@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+# 🎬 MovieMate
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MovieMate is a full-stack MERN application that allows users to discover trending and popular movies, register and log in securely, and manage a personalized movie watchlist.
 
-## Available Scripts
+Built using **MongoDB, Express, React, Node.js**, and styled with **Tailwind CSS**, it leverages the **TMDB API** for real-time movie data. JWT handles secure authentication, and the overall architecture follows clean, scalable practices.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📸 Demo
+![image](https://github.com/user-attachments/assets/89aad31e-12b2-425b-ad71-ee393c5e7dca)
+![image](https://github.com/user-attachments/assets/59f57081-c6f8-4895-9d0d-6a2ec84b5251)
+![image](https://github.com/user-attachments/assets/fb5c1bfa-0bd5-4610-8f81-0db411e4df5b)
+![image](https://github.com/user-attachments/assets/c68efa5b-8307-405a-a286-827cfefd6bf8)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🌐 Public
+- Browse trending and popular movies via TMDB API
+- Search movies by title
+- View detailed movie info (poster, overview, rating)
 
-### `npm run build`
+### 🔐 Authentication
+- Secure user registration with bcrypt password hashing
+- JWT-based login authentication
+- Protected routes for authenticated users
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 📋 Watchlist
+- Add movies to personal watchlist
+- View all saved movies
+- Remove movies from watchlist
+- Persistent data using MongoDB
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🧠 Project Architecture
+```plaintext
+Client (React + Tailwind)
+│
+├── Pages: Home, Login, Register, Watchlist
+├── Components: Navbar, MovieCard, ProtectedRoute, etc.
+└── API Calls: Axios for TMDB & backend APIs
+        ↓
+Backend (Node.js + Express)
+│
+├── Routes
+│   ├── /api/auth    → Login & Register
+│   └── /api/watchlist → CRUD for watchlist (Protected)
+│
+├── Middleware
+│   └── authMiddleware → JWT token validation
+│
+└── MongoDB
+    ├── Users
+    └── Watchlist (linked to user by ID)
+```
+⚙️ Tech Stack
+Frontend:
 
-### `npm run eject`
+React.js
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Tailwind CSS
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Axios
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Backend:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Node.js
 
-## Learn More
+Express.js
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+MongoDB (Mongoose)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+JWT (Authentication)
 
-### Code Splitting
+Bcrypt (Password hashing)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Third-Party API:
 
-### Analyzing the Bundle Size
+TMDB API (The Movie Database)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+📁 Folder Structure (Simplified)
+```plaintext
+/client
+  └── src/
+      ├── components/
+      ├── pages/
+      ├── utils/api.js
+      └── App.jsx
 
-### Making a Progressive Web App
+/server
+  ├── controllers/
+  ├── middleware/
+  ├── models/
+  ├── routes/
+  └── server.js
+```
+🔐 Authentication Flow
+Register: User signs up → password is hashed → saved to MongoDB
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Login: User enters credentials → server verifies & returns JWT token
 
-### Advanced Configuration
+Protected Routes: Frontend stores JWT in localStorage → attaches token to API headers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Watchlist Access: Backend verifies token using middleware before giving access
 
-### Deployment
+🛠️ Getting Started (Local Setup)
+bash
+Copy
+Edit
+# Clone the repository
+git clone https://github.com/dhruvin2968/moviemate.git
+cd moviemate
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Install backend dependencies
+cd server
+npm install
 
-### `npm run build` fails to minify
+# Install frontend dependencies
+cd ../client
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Set up .env file in /server with:
+MONGO_URI=your_mongo_connection_string
+JWT_SECRET=your_jwt_secret
+TMDB_API_KEY=your_tmdb_api_key
+
+# Start both servers
+cd ../server
+npm run dev
+
+cd ../client
+npm run dev
+💡 Future Improvements
+Add genres and filter movies
+
+Add movie trailers
+
+Pagination for movie lists
+
+Password reset functionality
+
+Responsive mobile enhancements
+
+🤝 Contributions
+Open to suggestions and contributions. Raise an issue or fork and PR if you want to improve something.
+
+📄 License
+MIT © Dhruvin Mehta
