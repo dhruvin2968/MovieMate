@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
  import { useTitle } from "../hooks/useTitle";
 
 import Backupimgsathi from "../components/img.jpeg";
+import MovieRecommendations from "./MovieRecommender";
 
 export const MovieDetailPage = () => {
   const params = useParams();
@@ -75,6 +76,7 @@ export const MovieDetailPage = () => {
 
         </div>
       </section>
+      <MovieRecommendations movieTitle={movie.title} />
     </main>
   )
 }
