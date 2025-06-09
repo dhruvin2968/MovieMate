@@ -1,6 +1,6 @@
 import React from "react";
 export const CardLite = ({ movie }) => {
-  const { title, overview,poster_path } = movie;
+  const { title, overview} = movie;
 
   return (
     <div className="max-w-sm bg-white border rounded-lg shadow-md p-4 m-4 dark:bg-black dark:border-gray-700 dark:text-white">
