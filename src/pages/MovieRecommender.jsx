@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { CardLite } from "../components/RecommenderCard"
 
-const API_URL = "https://dhruvin2968-movie-recommender.hf.space/recommend"; // Your Flask backend
+//const API_URL = "https://dhruvin2968-movie-recommender.hf.space/recommend"; /
+const API_URL = "https://dhruvin2968-movie-recommendation-system.hf.space/recommend";
 
 export default function MovieRecommendations({ movieTitle }) {
   const [recommendations, setRecommendations] = useState([]);
