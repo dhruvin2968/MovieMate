@@ -12,6 +12,7 @@ Built using **MongoDB, Express, React, Node.js**, and styled with **Tailwind CSS
 ![image](https://github.com/user-attachments/assets/59f57081-c6f8-4895-9d0d-6a2ec84b5251)
 ![image](https://github.com/user-attachments/assets/fb5c1bfa-0bd5-4610-8f81-0db411e4df5b)
 ![image](https://github.com/user-attachments/assets/c68efa5b-8307-405a-a286-827cfefd6bf8)
+![image](https://github.com/user-attachments/assets/87e34fe2-49b1-423b-a239-2ed7783b3894)
 
 ---
 
