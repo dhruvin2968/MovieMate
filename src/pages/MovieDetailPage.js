@@ -16,7 +16,7 @@ export const MovieDetailPage = () => {
 
   useEffect(() => {
     async function fetchMovie(){
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=943312ba32879486a085fc603420fc73`);
+     const response = await fetch(`https://moviemate-backend-tpz4.onrender.com/api/tmdb/movie/${params.id}`);
       const data = await response.json()
       setMovie(data);
     }

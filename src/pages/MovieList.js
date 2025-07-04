@@ -36,7 +36,7 @@ export const MovieList = ({apiPath,title}) => {
   
     checkTokenExpiry();
   }, []); // Runs only once on component mount
-  
+   
   
   return (
     <main>

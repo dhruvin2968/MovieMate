@@ -8,7 +8,7 @@ export const Card = ({ movie, state, setState }) => {
   const { id, original_title, overview, poster_path } = movie;
   const imgpth = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-    : Backupimgsathi;
+    : Backupimgsathi; 
 
   const [inWatchlist, setInWatchlist] = useState(false);
   const userToken = localStorage.getItem("token");
