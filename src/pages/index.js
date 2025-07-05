@@ -5,4 +5,3 @@ export {PageNotFound} from "./PageNotFound";
 export {Register} from "./Register"
 export {Login} from "./Login"
 export {Watchlist} from "./WatchList"
-export {LandingPage} from "./LandingPage"

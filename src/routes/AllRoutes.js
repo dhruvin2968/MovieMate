@@ -1,5 +1,5 @@
 import {Routes,Route} from "react-router-dom";
-import { MovieList, MovieDetailPage, Search, PageNotFound,Register,Login, Watchlist,LandingPage} from "../pages";
+import { MovieList, MovieDetailPage, Search, PageNotFound,Register,Login, Watchlist} from "../pages";
 
 export const AllRoutes = () => {
   return (
@@ -14,7 +14,6 @@ export const AllRoutes = () => {
     <Route path="register" element={<Register/>} />
     <Route path="login" element={<Login/>} />
     <Route path="watchlist" element={<Watchlist/>} />
-    <Route path="land" element={<LandingPage/>} />
     <Route path="*" element={<PageNotFound />} />
     </Routes>
     </div>

@@ -17,15 +17,13 @@ export const CardLite = ({ movie }) => {
           src={imgpth}
           alt={title}
         />
-       {isFallback && (
-  <div className="absolute bottom-16 right-28 w-full text-center px-4">
-    <h2 className="text-3xl font-black tracking-wide bg-gradient-to-r  from-red-500  via-yellow-500 to-blue-600 bg-clip-text text-transparent drop-shadow-md animate-bounce">
-      {title}
-    </h2>
-  </div>
-)}
-
-
+        {isFallback && (
+          <div className="absolute bottom-16 right-28 w-full text-center px-4">
+            <h2 className="text-3xl font-black tracking-wide bg-gradient-to-r  from-red-500  via-yellow-500 to-blue-600 bg-clip-text text-transparent drop-shadow-md animate-bounce">
+              {title}
+            </h2>
+          </div>
+        )}
       </Link>
       <div className="p-5 flex flex-col gap-3">
         {!isFallback && (
