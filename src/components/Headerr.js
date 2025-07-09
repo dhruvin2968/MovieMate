@@ -78,8 +78,12 @@ export const Headerr = () => {
 
   return (
     <header className="bg-transparent">
-      <nav className="bg-slate-200  dark:bg-black pl-2 sm:px-4 py-0">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
+      <nav className="
+  bg-gradient-to-r from-slate-200 via-blue-200 to-slate-200
+  dark:bg-gradient-to-r dark:from-gray-900 dark:via-black dark:to-gray-800
+  pl-2 sm:px-4 py-0
+">
+<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
           <Link
             to="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -246,7 +250,7 @@ export const Headerr = () => {
                 />
               </div>
             </div>
-            <ul className="flex flex-col fonts p-4 md:p-0 mt-4 font-bold  border-gray-100 rounded-lg bg-slate-200 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-slate-200 dark:bg-black md:dark:bg-black dark:border-gray-700">
+            <ul className="flex flex-col fonts p-4 md:p-0 mt-4 font-bold   rounded-lg bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  dark:bg-black  dark:border-gray-700">
               <li>
                 <NavLink
                   to="/"
